@@ -1,0 +1,14 @@
+{
+  "name": "osmosis-automator",
+  "version": "0.1",
+  "main": "index.js",
+  "repository": "https://github.com/ericHgorski/osmosis-automator.git",
+  "author": "Eric Gorski <er.h.gorski@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^13.1.1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
