@@ -1,12 +1,13 @@
-const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer');
+const { selectPool, acceptTOS } = require('./utils');
+const { OSMOSIS_POOL_URL } = require('./constants');
 
-const LATENCY = 100 // adjust for internet speed (50-1000)
-
-(async () => {
-  console.log('go');
-  const browser = await puppeteer.launch({ headless: false })
-  console.log('go');
+const start = async () => {
+  const browser = await puppeteer.launch({ headless: false, executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" })
   const page = await browser.newPage()
-  console.log('go');
-  await page.goto('https://example.com')
-})()
+  await page.goto(OSMOSIS_POOL_URL, { waitUntil: 'networkidle2' })
+  await acceptTOS(page)
+  await selectPool('1', page)
+}
+
+start()
